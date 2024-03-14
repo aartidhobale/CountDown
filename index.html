@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="main">
+        <div class="overlay">
+            <div class="title">Birthday coming soon</div>
+            <div class="title"><p id="end-date">18 March 2024 12:00 PM</p></div>
+           
+            <div class="col">
+
+                <div>
+                    <input type="text" readonly value="0" id="days">
+                    <br/>
+                    <label for="days">Days</label>
+                </div>
+
+                <div>
+                    <input type="text" readonly value="0" id="hours">
+                    <br/>
+                    <label for="hours">Hours</label>
+                </div>
+
+                <div>
+                    <input type="text" readonly value="0" id="minutes">
+                    <br/>
+                    <label for="minutes">Minutes</label>
+                </div>
+
+                <div>
+                    <input type="text" readonly value="0" id="seconds">
+                    <br/>
+                    <label for="seconds">Seconds</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const endDate = "15 MaY 2024 12:00 PM";
+        document.getElementById("end-date").innerText = endDate;
+
+        function clock(){
+            const end = new Date(endDate);
+            const now = new Date();
+            const diff = end - now;
+            const seconds = Math.floor(diff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+
+            document.getElementById("days").value = days;
+            document.getElementById("hours").value = hours % 24;
+            document.getElementById("minutes").value = minutes % 60;
+            document.getElementById("seconds").value = seconds % 60;
+        }
+
+        clock();
+
+        setInterval(clock, 1000);
+    </script> 
+</body>
+</html>
